@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>合并与变基 | sizeofio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我们正在开发某个项目，为了实现某个项目，我们创建了分支task_113，正在这个分支上开展工作。这个时候收到反馈说有个很严重的bug需要立即处理。这个时候，你应该立即切换到线上分支，为这个bug建立新的分支issue_005，并在这个分支上修复它。在测试通过后，切换到线上分支来合并issue_005，最后将改动推到线上。然后切换回task_113上继续做新的需求。 merge 合并 开始在task">
+<meta property="og:type" content="article">
+<meta property="og:title" content="合并与变基">
+<meta property="og:url" content="http://sizeof.io/2019/02/28/合并与变基/index.html">
+<meta property="og:site_name" content="sizeofio">
+<meta property="og:description" content="我们正在开发某个项目，为了实现某个项目，我们创建了分支task_113，正在这个分支上开展工作。这个时候收到反馈说有个很严重的bug需要立即处理。这个时候，你应该立即切换到线上分支，为这个bug建立新的分支issue_005，并在这个分支上修复它。在测试通过后，切换到线上分支来合并issue_005，最后将改动推到线上。然后切换回task_113上继续做新的需求。 merge 合并 开始在task">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac800e0d0e6b?w=470&h=184&f=png&s=6736">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac800c4ab821?w=459&h=284&f=png&s=9211">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac800c3dfa2f?w=627&h=280&f=png&s=10918">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac804693042a?w=589&h=330&f=png&s=16079">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac80100f61f4?w=762&h=345&f=png&s=16253">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac800ff8c2f5?w=913&h=338&f=png&s=19588">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac80132d5ee5?w=496&h=598&f=png&s=75451">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac803185dfa6?w=605&h=368&f=png&s=13680">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac8035c64e9f?w=871&h=416&f=png&s=15903">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac8033ce97cf?w=857&h=326&f=png&s=10727">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac80453c1da5?w=562&h=413&f=png&s=50827">
+<meta property="og:updated_time" content="2019-02-28T07:46:33.201Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="合并与变基">
+<meta name="twitter:description" content="我们正在开发某个项目，为了实现某个项目，我们创建了分支task_113，正在这个分支上开展工作。这个时候收到反馈说有个很严重的bug需要立即处理。这个时候，你应该立即切换到线上分支，为这个bug建立新的分支issue_005，并在这个分支上修复它。在测试通过后，切换到线上分支来合并issue_005，最后将改动推到线上。然后切换回task_113上继续做新的需求。 merge 合并 开始在task">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/2/27/1692ac800e0d0e6b?w=470&h=184&f=png&s=6736">
+  
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+</html>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title">SIZEOF IO</a>
+  </header>
+  <div class="ctnWrap">
+    <div class="icons">
+      
+        
+          
+            <a href="https://github.com/pchangl" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div>
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">HOME</a>
+          
+        
+            <a href="/archives" class="nav-menu ">ARCHIVE</a>
+          
+        
+            <a href="/about" class="nav-menu ">ABOUT</a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article">
+  <h2 class="title">合并与变基</h2>
+  <p class="sub">Feb 28, 2019</p>
+  <article class="content">
+    <p>我们正在开发某个项目，为了实现某个项目，我们创建了分支<code>task_113</code>，正在这个分支上开展工作。这个时候收到反馈说有个很严重的bug需要立即处理。这个时候，你应该立即切换到线上分支，为这个bug建立新的分支<code>issue_005</code>，并在这个分支上修复它。在测试通过后，切换到线上分支来合并<code>issue_005</code>，最后将改动推到线上。然后切换回<code>task_113</code>上继续做新的需求。</p>
+<h2 id="merge-合并"><a href="#merge-合并" class="headerlink" title="merge 合并"></a>merge 合并</h2><p><img src="https://user-gold-cdn.xitu.io/2019/2/27/1692ac800e0d0e6b?w=470&amp;h=184&amp;f=png&amp;s=6736" alt="enter image description here"></p>
+<h3 id="开始在task-113上工作："><a href="#开始在task-113上工作：" class="headerlink" title="开始在task 113上工作："></a>开始在task 113上工作：</h3><p>在没开始做任务前，我们仓库的结构如上。现在我们开始创建task_113分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b task_113</span><br><span class="line">Switched to a new branch &apos;task_113&apos;</span><br></pre></td></tr></table></figure></p>
+<p>这个时候我们的git仓库结构如下：<br><img src="https://user-gold-cdn.xitu.io/2019/2/27/1692ac800c4ab821?w=459&amp;h=284&amp;f=png&amp;s=9211" alt="enter image description here"></p>
+<p>这个时候我们在当前分支上做了些工作，并且提交到了版本库后，我们的git结构如下：<br><img src="https://user-gold-cdn.xitu.io/2019/2/27/1692ac800c3dfa2f?w=627&amp;h=280&amp;f=png&amp;s=10918" alt="enter image description here"></p>
+<h3 id="收到紧急问题issue-005"><a href="#收到紧急问题issue-005" class="headerlink" title="收到紧急问题issue 005"></a>收到紧急问题issue 005</h3><p>这个时候我们收到反馈的bug后，我们立即切到master分支上，从master分支创建新的<code>issue_005</code>分支开始解决线上的bug：</p>
+<blockquote>
+<p>在切换到master之前，需要确认所有修改已经提交到版本库中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 切换到master分支</span><br><span class="line">git checkout master</span><br><span class="line">Switched to branch &apos;master&apos;</span><br><span class="line"></span><br><span class="line"># 建立issue_005分支处理bug</span><br><span class="line">git checkout -b issue_005</span><br><span class="line">Switched to a new branch &apos;issue_005&apos;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>下面的图是我们现在git仓库的状态：<br><img src="https://user-gold-cdn.xitu.io/2019/2/27/1692ac804693042a?w=589&amp;h=330&amp;f=png&amp;s=16079" alt="enter image description here"><br>当issue_005分支上的修改测试完成后，我们需要到master上将其合并。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">Switched to branch &apos;master&apos;</span><br><span class="line"></span><br><span class="line">git merge issue_005</span><br><span class="line">Updating 04132ad..86e4899</span><br><span class="line">Fast-forward</span><br><span class="line"> about.html | 1 +</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Fast-forward: 表示的是在合并两个分支的时候，如果顺着一个分支走下去能够到达另一个分支，那么Git在合并两者的时候，只会简单的将指针向前推进（指针右移），因为这种情况没有需要解决的分歧，这就叫做快进。</p>
+</blockquote>
+<p>这个紧急问题处理完成后，我们就可以将issue_005这个分支删除，因为我们再也用不上它了。删除完成后，我们继续回到task_113分支上继续我们的工作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git branch -d issue_005</span><br><span class="line">Deleted branch issue_005 (was 86e4899).</span><br><span class="line"></span><br><span class="line">git checkout task_113</span><br><span class="line">Switched to branch &apos;task_113&apos;</span><br><span class="line"></span><br><span class="line">git commit -a -v -m &apos;update index.html[task 113]&apos;</span><br><span class="line">[task_113 76e0e88] update index.html[task 113]</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure></p>
+<p>这个时候我们再来看看我们的仓库结构：<br><img src="https://user-gold-cdn.xitu.io/2019/2/27/1692ac80100f61f4?w=762&amp;h=345&amp;f=png&amp;s=16253" alt="enter image description here"></p>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><p>task_113的需求我们已经完成了，并且测试通过，这个时候我们应该开始将它合并到master上准本发布到线上环境了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">Switched to branch &apos;master&apos;</span><br><span class="line"></span><br><span class="line">git merge task_113</span><br><span class="line">Merge made by the &apos;recursive&apos; strategy.</span><br><span class="line"> index.html | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure></p>
+<p>这次的合并并没有像上次合并那样，出现<code>Fast-forward</code>。因为master分支所在提交并不是task_113分支所提交的直接祖先，在这种情况下，Git会使用两个分支末端所指的快照(c4和c5)以及这两个分支的共同祖先c2来一个简单的三方合并。合并过后的仓库结构为：<br><img src="https://user-gold-cdn.xitu.io/2019/2/27/1692ac800ff8c2f5?w=913&amp;h=338&amp;f=png&amp;s=19588" alt="enter image description here"></p>
+<p>这个时候我们再把task_113分支删除了就好了。我们再看看<code>git log --graph</code>的结果：<br><img src="https://user-gold-cdn.xitu.io/2019/2/27/1692ac80132d5ee5?w=496&amp;h=598&amp;f=png&amp;s=75451" alt="enter image description here"></p>
+<p>从上图可以看出，和我们画的结构图完全一致，接下来我们再介绍下另外一种方法<strong>变基</strong></p>
+<h2 id="变基"><a href="#变基" class="headerlink" title="变基"></a>变基</h2><p><img src="https://user-gold-cdn.xitu.io/2019/2/27/1692ac803185dfa6?w=605&amp;h=368&amp;f=png&amp;s=13680" alt="enter image description here"><br>上图是我们当前项目结构，如果这个时候用合并的方式来整合分支的话，最终结构为：<br><img src="https://user-gold-cdn.xitu.io/2019/2/27/1692ac8035c64e9f?w=871&amp;h=416&amp;f=png&amp;s=15903" alt="enter image description here"><br>整合分支最容易的方法就是合并分支。它会把两个分支的最新快照以及二者之间共同祖先(如果能过快进的话，则直接快进)进行三方合并来生成新的快照。</p>
+<p>而变基则是提取出C4中引入的补丁和修改，在C3的基础上应用一次。可以使用rebase命令将提交的某一分支上的所有修改都移至另一分支上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout experiment</span><br><span class="line">$ git rebase master</span><br><span class="line">First, rewinding head to replay your work on top of it...</span><br><span class="line">Applying: added staged command</span><br></pre></td></tr></table></figure>
+<p>这个时候我们回到master上，进行一次快进合并：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git merge work</span><br><span class="line">Updating 3462092..ece0ba5</span><br><span class="line">Fast-forward</span><br><span class="line"> work.html | 0</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 work.html</span><br></pre></td></tr></table></figure></p>
+<p>合并过后，我们的仓库结构为：<br><img src="https://user-gold-cdn.xitu.io/2019/2/27/1692ac8033ce97cf?w=857&amp;h=326&amp;f=png&amp;s=10727" alt="enter image description here"></p>
+<p>还是用git log –graph来看看最后的结构：<br><img src="https://user-gold-cdn.xitu.io/2019/2/27/1692ac80453c1da5?w=562&amp;h=413&amp;f=png&amp;s=50827" alt="enter image description here"></p>
+<p>其实变基和合并一样，最终都生成了一次新的提交，但是使用变基我们让提交历史变得更加简介，你可以看到经过变基的分支的历史记录中，尽管开发工作是并行的，但是它们看起来就好像是穿行一样，提交历史是一条直线没有分叉。在简单的项目中，可能有点分叉也没什么，但是在一个多人维护的大型项目中，分叉多了项目的维护工作就会变得越来越复杂。</p>
+<p>一般情况下我们用变基也就是为了确保向远程分支推送时能够保持提交历史的简洁：当我们在github上修复别人项目的bug时，我们首先在自己的分支里开发，当开发完成后，你需要将你的代码变基到origin/master上，然后再向主项目提交修改。这样的话，该项目的维护者就不再需要进行整合工作，而是快速合并即可。</p>
+<h3 id="变基的风险"><a href="#变基的风险" class="headerlink" title="变基的风险"></a>变基的风险</h3><p>使用变基的时候一定要记住一条规则：<strong>不要对在你的仓库外有副本的分支执行变基。</strong><br>变基操作本质上是丢弃一些现有的提交，然后相应的建一些内容一样但实际不同的提交。如果你将提交推送到远程仓库上，而其他人也从该仓库拉取提交并基于你的分支创建了新的分支做后续工作，这个时候你用git rebase命令重新整理了提交再此推送，其他人不得不再次将它们手头的工作与你的提交进行整合，如果他们还要拉去并整合他们修改过的提交，整个开发工作就会变得异常的混乱。想想去年美国因为同事频繁使用<code>git push -f</code>推送到远程分支而被同事枪击的新闻吧，这样你就能记住这条规则了。</p>
+
+  </article>
+  <footer class="f-cf">
+    
+    
+      <a href="/2019/02/28/关于PHP字符串的一道面试题/" class="link f-fr">关于PHP字符串的一道面试题⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  d.guangying@foxmail.com
+  
+    
+      
+        · <a href="https://github.com/pchangl" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Clover Tuan</span>
+</footer>
+  </div>
+</body>
+</html>
